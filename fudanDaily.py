@@ -96,15 +96,15 @@ def save(_session, _payload):
 
 
 def notify(_title, _message=None):
-    if not PUSH_KEY:
-        print("未配置PUSH_KEY！")
-        return
-
     if not _message:
         _message = _title
 
     print(_title)
     print(_message)
+    
+    if not PUSH_KEY:
+        print("未配置PUSH_KEY！")
+        return
 
     _response = requests.post(f"https://sc.ftqq.com/{PUSH_KEY}.send", {"text": _title, "desp": _message})
 
